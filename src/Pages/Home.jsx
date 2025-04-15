@@ -13,6 +13,7 @@ const Home = () => {
       <FoodItems />
       <Cart />
       
+      
     </>
   )
 }
