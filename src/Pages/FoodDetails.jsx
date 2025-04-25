@@ -49,7 +49,7 @@ const FoodDetails = ({handleToast}) => {
             <button
               onClick={() => {
                 dispatch(addToCart({...filteredItem, qty: 1 }));
-                handleToast(name);
+                handleToast();
               }}
               className="bg-green-500 font-semibold text-white px-10 py-3 mt-6 rounded-lg hover:bg-green-600 transition-all duration-500 z-50"
             >

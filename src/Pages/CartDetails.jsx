@@ -52,10 +52,16 @@ const CartDetails = () => {
             Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laboriosam
           </p>
           <div className="w-[400px] h-[70px] ml-12 mt-8 flex items-center gap-6">
-            <button className="py-3 px-12 border text-green-500 font-semibold cursor-pointer hover:bg-green-500 hover:text-white">
+            <button
+              onClick={() => navigate("/login")}
+              className="py-3 px-12 border text-green-500 font-semibold cursor-pointer hover:bg-green-500 hover:text-white"
+            >
               Login
             </button>
-            <button className="py-3 px-12 bg-green-500 text-white font-semibold cursor-pointer hover:bg-green-600">
+            <button
+              onClick={() => navigate("/signup")}
+              className="py-3 px-12 bg-green-500 text-white font-semibold cursor-pointer hover:bg-green-600"
+            >
               Sign Up
             </button>
           </div>
