@@ -9,6 +9,39 @@ const Login = () => {
     password: "",
   });
 
+  const [error, setError] = useState({});
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const validationError = {};
+
+    if (!formData.email.trim()) {
+      validationError.email = "email is required";
+    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
+      validationError.email = "email is not valid";
+    }
+
+    if (!formData.password.trim()) {
+      validationError.password = "password is required";
+    } else if (formData.password.length < 6) {
+      validationError.password = "password should be at least 6 character";
+    }
+
+    setError(validationError);
+
+    if (Object.keys(validationError).length === 0) {
+      alert("Form Submitted successfully");
+    }
+  };
 
   return (
     <div>
@@ -20,7 +53,7 @@ const Login = () => {
           <span className="text-gray-500 ml-36 mt-5">
             Please Enter Your Detail
           </span>
-          <form>
+          <form onSubmit={handleSubmit}>
             <div className="mt-2">
               <label className=" font-semibold text-gray-500 ml-7 mt-5">
                 Email
@@ -29,7 +62,11 @@ const Login = () => {
                 className="h-[50px] w-[400px] ml-7 mt-2 p-2 border"
                 name="email"
                 type="email"
+                onChange={handleChange}
               />
+              {error.email && (
+                <span className="text-red-600 ml-7">{error.email}</span>
+              )}
             </div>
             <div className="mt-2">
               <label className=" font-semibold text-gray-500 ml-7 mt-5">
@@ -39,7 +76,11 @@ const Login = () => {
                 className="h-[50px] w-[400px] ml-7 mt-2 p-2 border"
                 name="password"
                 type="password"
+                onChange={handleChange}
               />
+              {error.password && (
+                <span className="text-red-600 ml-7">{error.password}</span>
+              )}
             </div>
             <div className="mt-2 flex justify-between items-center pl-7 pr-8">
               <label className="text-gray-500 cursor-pointer">
