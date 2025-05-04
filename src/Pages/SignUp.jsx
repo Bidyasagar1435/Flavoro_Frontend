@@ -48,6 +48,19 @@ const SignUp = () => {
     setErrors(validationError);
 
     if (Object.keys(validationError).length === 0) {
+      const users = JSON.parse(localStorage.getItem("users")) || [];
+
+      const newUser = JSON.parse(localStorage.getItem("users"));
+
+      // if (newUser.email === formData.email) {
+      //   validationError.email = "user already exist";
+      // }
+
+      const emailExist = 
+
+      console.log(users);
+
+      localStorage.setItem("users", JSON.stringify([...users, formData]));
       alert("Form Submitted successfully");
     }
   };
